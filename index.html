@@ -9,8 +9,7 @@
   <meta name="author" content="David Rowe">
 
   
-  <meta name="description" content="Hello, Universe
-">
+  <meta name="description" content="Introduction - An Ode to _why and Ruby Koans Near the beginning of my brief career as a Rubyist, I came across an invaluable resource, Why&rsquo;s ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +71,275 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/08/09/let-there-be-light/">Let There Be Light!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-09T18:13:59-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:13 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Introduction - An Ode to _why and Ruby Koans</h2>
+
+<p>Near the beginning of my brief career as a Rubyist, I came across an invaluable resource, <strong><a href="http://mislav.uniqpath.com/poignant-guide/">Why&rsquo;s (Poignant) Guide to Ruby</a></strong>. Written by the elusive _why the lucky stiff, the <em>Poignant Guide</em> is equal parts Ruby tutorial and postmodern meta-fiction. Code examples walk the reader through the construction of monkeys with frogs attached to their hands, dank dungeons optimized for the slaying of intrepid rabbit adventurers, and an alien planet which can read your mind, or grant a wish, but not both at the same time.</p>
+
+<p>These madcap coding lessons are embedded within a frame story involving a well-meaning mad scientist, the ghost of the niece he accidentally killed, cartoon foxes looking for their stolen pickup truck, and a hopelessly imprisoned Frenchman. Also there is a sideplot about a secret society that eats scarves. The book is quite joyously insane, and what it lacks in technical detail, it more than makes up for in sheer inventiveness and creative zeal, although the &lsquo;ending&rsquo; is a bit of a letdown. The <em>Poignant Guide</em> is required reading for any Rubyist.</p>
+
+<p>Tragically, _why the lucky stiff committed &lsquo;infocide&rsquo; in August 2009, removing all of his code from Github and withdrawing completely from the Ruby community. This <strong><a href="http://www.slate.com/articles/technology/technology/2012/03/ruby_ruby_on_rails_and__why_the_disappearance_of_one_of_the_world_s_most_beloved_computer_programmers_.html">Slate article</a></strong> does a good job of describing his importance to the community, and the impact of his disappearance.</p>
+
+<p>Why returned briefly in January 2013 to send a printer file to Steve Klabnik, the programmer who has kept Why&rsquo;s <strong><a href="http://www.hackety.com/">Hackety Hack</a></strong> project alive after his disappearance. Klabnik has compiled and released this document under the title <strong><a href="https://ia601703.us.archive.org/28/items/136875051WhySCompletePrinterSpoolAsOneBook/136875051--why-s-complete-printer-spool-as-one-book.pdf">Closure</a></strong>, and has made his own <strong><a href="http://words.steveklabnik.com/the-closure-companion">comments about Why&rsquo;s final work</a></strong>. The work contains, among other vignettes, musings about the thanklessness of a career in programming and the deletion of one&rsquo;s public identity.</p>
+
+<p>Apart from my fascination with Why and his story, I&rsquo;ve found great encouragement in his efforts to instill programming with a sense of limitless creativity and whimsy, and have found that some of his strangest, or most creative, code examples from the <em>Poignant Guide</em> have stuck with me the most and helped to hammer in my understanding of Ruby basics. I love the idea of world-building in Ruby, and think that the language lends itself to constructing, not only useful tools, but also to modelling fantastical creatures, mythological entities, and possibly, spiritual truths.</p>
+
+<p>Following in Why&rsquo;s footsteps are sites like <strong><a href="https://rubymonk.com/">rubymonk</a></strong>, which presents coding exercises as being similar to Zen koans which must be unravelled by the student. In <strong><a href="http://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/25-dynamic-methods/lessons/65-send">one example</a></strong> the student&rsquo;s walking staff transforms into a mysterious glider whose properties must be sussed out using the <code>send</code> method. <strong><a href="http://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/25-dynamic-methods/lessons/72-define-method">Later on</a></strong> in their introduction to metaprogramming, <code>define_method</code> is used iteratively to allow a young Monk to meditate on the meaning of Life, the Universe, and Everything in order to attain Ultimate Power.</p>
+
+<h2>Genesis 1: <code>"Let there be #{thing}!"</code></h2>
+
+<p>I&rsquo;m still getting a sense of the power of <code>define_method</code>. Below we will use it to call creation into being:</p>
+
+<blockquote><p>In the beginning God created the heavens and the earth.</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">God</span>
+</span><span class='line'>  <span class="kp">attr_reader</span><span class="p">:</span> <span class="n">heavens_and_earth</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">create_heavens_and_earth</span>
+</span><span class='line'>    <span class="vi">@heavens_and_earth</span> <span class="o">=</span> <span class="no">Universe</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Universe</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:day</span><span class="p">,</span> <span class="ss">:light</span><span class="p">,</span> <span class="ss">:sky</span><span class="p">,</span> <span class="ss">:land</span><span class="p">,</span> <span class="ss">:stars</span><span class="p">,</span> <span class="ss">:creatures</span><span class="p">,</span> <span class="ss">:humans</span><span class="p">,</span> <span class="ss">:blessed</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>    <span class="vi">@day</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In order for our God to create the heavens and earth, we will need to construct a <code>God</code> class and a <code>create_heavens_and_earth</code> method which will create a new instance variable, <code>@heavens_and_earth</code> which will be assigned to a new instance of the <code>Universe</code> class.</p>
+
+<p>You can see that a new <code>Universe</code> needs to be &lsquo;created&rsquo; with a list of <code>attr_accessor</code>&rsquo;s which will enable our <code>God</code> to create as it wishes, but the the only attribute that a <code>Universe</code> will have set on initialization will be <code>@day</code> with a value of <code>0</code>.</p>
+
+<p>Also note that our <code>God</code> will have an <code>attr_reader</code> for <code>@heavens_and_earth</code> in order to check in on its creation.</p>
+
+<p>First we will need to instantiate our <code>God</code> class and create a universe:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">god</span> <span class="o">=</span> <span class="no">God</span><span class="o">.</span><span class="n">new</span>                 <span class="c1"># =&gt; #&lt;God:0x007fc5e50b5240&gt;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">create_heavens_and_earth</span>  <span class="c1"># =&gt; #&lt;Universe:0x007fc5e50b4ea8 @day=0&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In order for <code>god</code> to populate <code>@heavens_and_earth</code> with all of the nice things people appreciate, he will need some methods at his disposal:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">God</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">[</span><span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;sky&quot;</span><span class="p">,</span> <span class="s2">&quot;land&quot;</span><span class="p">,</span> <span class="s2">&quot;stars&quot;</span><span class="p">,</span> <span class="s2">&quot;creatures&quot;</span><span class="p">,</span> <span class="s2">&quot;humans&quot;</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">thing</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">define_method</span><span class="p">(</span><span class="s2">&quot;create_</span><span class="si">#{</span><span class="n">thing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>      <span class="vi">@heavens_and_earth</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">thing</span><span class="si">}</span><span class="s2">=&quot;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@heavens_and_earth</span><span class="o">.</span><span class="n">day</span> <span class="o">+=</span><span class="mi">1</span>
+</span><span class='line'>      <span class="s2">&quot;Let there be </span><span class="si">#{</span><span class="n">thing</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here we use <code>define_method</code> and iteration in order to create a number of methods which all do essentially the same thing but with a different name and target.</p>
+
+<p>Each of the items in the array above (<code>"light","sky","land"</code>, etc.) is passed into an <code>each</code> loop and used to define an instance method for <code>god</code>, our instance of the <code>God</code> class:</p>
+
+<ul>
+<li><code>create_light</code></li>
+<li><code>create_sky</code></li>
+<li><code>create_land</code></li>
+<li>etc.</li>
+</ul>
+
+
+<p>Each of these methods, when called, will use the <code>send</code> method to send a command to <code>@heavens_and_earth</code> our instance of the <code>Universe</code> class, to create the given &ldquo;thing&rdquo; (ie. changing its value to <code>true</code>), moving time in that <code>Universe</code> forward by 1 day, and returning <code>god</code>&rsquo;s declamation about that thing.</p>
+
+<p>Cue day 1:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">light</span>   <span class="c1"># =&gt; nil</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">create_light</span>              <span class="c1"># =&gt; &quot;Let there be light!&quot;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">light</span>   <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">day</span>     <span class="c1"># =&gt; 1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that, before <code>create_light</code> was called on <code>god</code>, there was no <code>light</code> in <code>god</code>&rsquo;s <code>heavens_and_earth</code>. Also note that <code>define_method</code>, used in our <code>each</code> loop, did successfully create at <code>create_light</code> instance method for <code>god</code>, even though we didn&rsquo;t explicitly create it using <code>def create_light</code>.</p>
+
+<p>Here, <code>create_light</code> is called on <code>god</code>, and <code>god</code> proclaims (returns) <code>"Let there be light!"</code>. We can see that <code>@heavens_and_earth</code> now has light (<code>@light = true</code>), and the day in our <code>Universe</code> is now <code>1</code>. Not a bad day&rsquo;s work.</p>
+
+<p>Day 2 proceeds much the same way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">sky</span>  <span class="c1"># =&gt; nil</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">create_sky</span>             <span class="c1"># =&gt; &quot;Let there be sky!&quot;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">sky</span>  <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">day</span>  <span class="c1"># =&gt; 2</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As does day 3:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">land</span>  <span class="c1"># =&gt; nil</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">create_land</span>             <span class="c1"># =&gt; &quot;Let there be land!&quot;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">land</span>  <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">day</span>   <span class="c1"># =&gt; 3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Day 4:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">stars</span>  <span class="c1"># =&gt; nil</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">create_stars</span>             <span class="c1"># =&gt; &quot;Let there be stars!&quot;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">stars</span>  <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">day</span>     <span class="c1"># =&gt; 4</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Day 5:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">creatures</span>  <span class="c1"># =&gt; nil</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">create_creatures</span>             <span class="c1"># =&gt; &quot;Let there be creatures!&quot;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">creatures</span>  <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">day</span>    <span class="c1"># =&gt; 5</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And day 6:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">od</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">humans</span>  <span class="c1"># =&gt; nil</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">create_humans</span>             <span class="c1"># =&gt; &quot;Let there be humans!&quot;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">humans</span>  <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">day</span>        <span class="c1"># =&gt; 6</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because of that metaprogramming wizardry we set our <code>God</code> class up with earlier, we didn&rsquo;t have to go back and define additional methods for each of <code>god</code>&rsquo;s creative actions, so that&rsquo;s neat.</p>
+
+<p>On the seventh day, <code>god</code> rests. We just need to crack open the <code>God</code> class:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">God</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">rest</span>
+</span><span class='line'>    <span class="vi">@heavens_and_earth</span><span class="o">.</span><span class="n">blessed</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="vi">@heavens_and_earth</span><span class="o">.</span><span class="n">day</span> <span class="o">+=</span><span class="mi">1</span>
+</span><span class='line'>    <span class="s2">&quot;It is good.&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And give our guy a chance to take a break.</p>
+
+<blockquote><p>By the seventh day God had finished the work he had been doing; so on the seventh day he rested from all his work. Then God blessed the seventh day and made it holy, because on it he rested from all the work of creating that he had done.</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">blessed</span>  <span class="c1"># =&gt; nil</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">rest</span>                       <span class="c1"># =&gt; &quot;It is good.&quot;</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">blessed</span>  <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="n">god</span><span class="o">.</span><span class="n">heavens_and_earth</span><span class="o">.</span><span class="n">day</span>      <span class="c1"># =&gt; 7</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I think that&rsquo;s all for now. Hope you enjoyed reading. Next time: something else!</p>
+
+<ul>
+<li><strong>Bonus: Our universe from the above example, <code>@heavens_and_earth</code>, exists only as an instance variable of our instance of the <code>God</code> class, or <code>god</code> for short. <code>@heavens_and_earth</code> cannot outlive <code>god</code>.</strong>
+
+<ul>
+<li>Is this how our actual universe works?</li>
+<li>Nietzsche famously stated that &ldquo;God is dead&rdquo;, does this mean that we never existed?</li>
+<li>Will I be able to improve on this model next time?</li>
+<li>True or false: What <em>has been</em> exists no more; and exists just as little as that which
+has <em>never</em> been. But everything that exists <em>has been</em> in the next
+moment.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/08/04/my-first-post-on-octopress/">My First Post on Octopress</a></h1>
     
     
@@ -107,6 +375,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/08/09/let-there-be-light/">Let There Be Light!</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/08/04/my-first-post-on-octopress/">My First Post on Octopress</a>
