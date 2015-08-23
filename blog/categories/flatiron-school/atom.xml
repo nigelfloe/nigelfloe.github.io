@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Flatiron&nbsp;school | Creation in Code]]></title>
+  <title><![CDATA[Category: flatiron&nbsp;school | Creation in Code]]></title>
   <link href="http://nigelfloe.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://nigelfloe.github.io/"/>
-  <updated>2015-08-09T23:50:08-04:00</updated>
+  <updated>2015-08-23T17:40:28-04:00</updated>
   <id>http://nigelfloe.github.io/</id>
   <author>
     <name><![CDATA[David Rowe]]></name>
@@ -188,7 +188,7 @@ moment.</li>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
+    <title type="html"><![CDATA[My First Post On Octopress]]></title>
     <link href="http://nigelfloe.github.io/blog/2015/08/04/my-first-post-on-octopress/"/>
     <updated>2015-08-04T14:33:45-04:00</updated>
     <id>http://nigelfloe.github.io/blog/2015/08/04/my-first-post-on-octopress</id>
