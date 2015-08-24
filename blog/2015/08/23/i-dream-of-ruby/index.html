@@ -1,0 +1,332 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>I Dream of Ruby  | Creation in Code</title>
+
+<meta name="author" content="David Rowe"> 
+
+<meta name="description" content="Using Ruby code to model universal truths."> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Creation in Code" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Creation in Code</a></h1>
+<h4>Modelling our universe in Ruby</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:nigelfloe.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">I Dream of Ruby</h2>
+	<div class="entry-content"><h2>HydrationError expecting water (0 for 1)</h2>
+
+<p>Last night, I lay tossing and turning in bed, wrestling with phantom error messages. For some reason, the <code>sound_sleep</code> method I normally relied on to send my <code>self</code> (<code>david = Person.new(name: David, age: 26)</code>) off to <code>asleep = true</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Sleepable</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">:asleep</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">:,</span> <span class="ss">age</span><span class="p">:)</span>
+</span><span class='line'>    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+</span><span class='line'>    <span class="vi">@age</span> <span class="o">=</span> <span class="n">age</span>
+</span><span class='line'>    <span class="vi">@asleep</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">asleep?</span>
+</span><span class='line'>    <span class="o">!!</span><span class="vi">@asleep</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">david</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">26</span><span class="p">)</span>
+</span><span class='line'><span class="n">david</span><span class="o">.</span><span class="n">asleep?</span>                               <span class="c1"># =&gt; false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What&rsquo;s going on here? I roll over, and ask Taryn, my girlfriend, why I can&rsquo;t sleep. She furrows her brows and turns away from me, taking the blankets.</p>
+
+<p>Hmph. I guess I&rsquo;ll check the Sleepable module for answers:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Sleepable</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">sound_sleep</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">hydrated</span>
+</span><span class='line'>      <span class="n">asleep</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">david</span><span class="o">.</span><span class="n">sound_sleep</span>                           <span class="c1"># =&gt; nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>nil</code> sleep sucks at 2 AM.</p>
+
+<p>Check the conditional, maybe <code>self</code> is de<code>hydrated</code>?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">david</span><span class="o">.</span><span class="n">hydrated</span>                              <span class="c1"># =&gt; nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>nil</code> isn&rsquo;t really helping me here&hellip;. Let&rsquo;s look at my Person class again&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">Biology</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Sleepable</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">:asleep</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">:,</span> <span class="ss">age</span><span class="p">:)</span>
+</span><span class='line'>    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+</span><span class='line'>    <span class="vi">@age</span> <span class="o">=</span> <span class="n">age</span>
+</span><span class='line'>    <span class="vi">@asleep</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">asleep?</span>
+</span><span class='line'>    <span class="o">!!</span><span class="vi">@asleep</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">david</span><span class="o">.</span><span class="n">asleep?</span>                               <span class="c1"># =&gt; false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>grumble</em></p>
+
+<p>I don&rsquo;t see anything about <code>hydrate</code> here. This is hopeless, and <code>david</code> is so tired&hellip;I mean.. <em>I&rsquo;m</em> so tired. <code>self</code> is tired&hellip;..</p>
+
+<p>Hang on! What&rsquo;s that <code>Biology</code> inheritance? That wasn&rsquo;t there before! Fucking dream code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">david</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">ancestors</span>                       <span class="c1"># =&gt; [Person, Sleepable, Biology, Object, Kernel, BasicObject]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>a-HA! a <code>Biology</code> class, that must be the class that&hellip;ummm&hellip;generates behavior for&hellip;..biologic things&hellip;.like birds! or <a href="http://giphy.com/gifs/cat-lolcats-the-internet-EeffMbJ6pwxAQ">lolcats</a>! or people maybe</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Biology</span><span class="o">.</span><span class="n">methods</span>                             <span class="c1"># =&gt; [:allocate, :new, :superclass, :json_creatable?, :freeze, :===, :==, :&lt;=&gt;, :&lt;, :&lt;=, :&gt;, :&gt;=, :to_s, :inspect, :included_modules, :sh_t, :include?, :name, :ancestors, :instance_methods, :public_instance_methods, :protected_instance_methods, :private_instance_methods, :constants, :const_get, :const_set, :const_defined?, :const_missing, :die, :class_variables, :remove_class_variable, :class_variable_get, :class_variable_set, :class_variable_defined?, :public_constant, :private_constant, :singleton_class?, :include, :prepend, :hydrate, :module_exec, :class_exec, :module_eval, :class_eval, :method_defined?, :public_method_defined?, :fuck, :private_method_defined?, :protected_method_defined?, :public_class_method, :private_class_method, :autoload, :eat :autoload?, :instance_method, :public_instance_method, :to_json, :nil?, :=~, :!~, :eql?, :hash, :class, :singleton_class, :clone, :dup, :itself, :taint, :tainted?, :pontificate :untaint, :untrust, :meiosis, :untrusted?, :trust, :frozen?, :methods, :...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Whoa, there&rsquo;s a lot going on in there&hellip;.</p>
+
+<p>Wait! I see a method called <code>:hydrate</code>. Maybe&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">david</span><span class="o">.</span><span class="n">hydrate</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># ~&gt; HydrationError</span>
+</span><span class='line'><span class="c1"># ~&gt; expecting water (0 for 1)</span>
+</span><span class='line'><span class="c1"># ~&gt;</span>
+</span><span class='line'><span class="c1"># ~&gt; /Users/david/dev/dream.rb:17:in `hydrate&#39;</span>
+</span><span class='line'><span class="c1"># ~&gt; /Users/david/dev/dream.rb:35:in `&lt;main&gt;&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&rsquo;s great when Ruby errors are so descriptive. It looks like I need water.</p>
+
+<p>&ldquo;Taryn, I figured it out! I just needed a glass of water!&rdquo;</p>
+
+<p>She mumbles something and puts a pillow over her head.</p>
+
+<h2>Programming Dreams</h2>
+
+<p>Apparently maddening dreams related to programming are pretty common. There are some good ones in here:</p>
+
+<p><a href="http://c2.com/cgi/wiki?WeirdDeveloperDreams">http://c2.com/cgi/wiki?WeirdDeveloperDreams</a></p>
+
+<p>including this gem:</p>
+
+<blockquote><p>I know I&rsquo;m awake, &amp; I know I fall asleep. Then, in the dream, I wake up a few minutes later, and, in the dream, can&rsquo;t sleep. I spend a few hours wandering around the house until I get tired again, and in the dream, fall asleep again. Then, still in the dream, my alarm goes off. I wake up, and start to go about my day, which feels like an extension of the bad dream I&rsquo;d &ldquo;just had&rdquo; in the bad dream I <em>AM</em> having.
+Recurse this about five times, so that by the time my REAL alarm goes off, and I really AM awake, I&rsquo;m so F4&rsquo;d up I can&rsquo;t tell if I&rsquo;m awake, asleep, if I ever WENT to sleep, if I&rsquo;ve gotten ANY rest what-so-ever, and subsequently spend the rest of the day feeling emotionally &amp; physically drained.
+Then I go home that night, hit the couch, and sleep for nine hours straight.
+This is not an uncommon occurrence, unfortunately.</p></blockquote>
+
+<p><img src="http://media.giphy.com/media/D3hbWaBffn9Cg/giphy.gif" alt="recursion" /></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-08-23T18:49:49-04:00" pubdate data-updated="true"></time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/flatiron-school/'>flatiron&nbsp;school</a>
+
+</div>
+
+
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    David Rowe
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

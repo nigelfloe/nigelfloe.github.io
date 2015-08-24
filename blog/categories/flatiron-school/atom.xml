@@ -4,7 +4,7 @@
   <title><![CDATA[Category: flatiron&nbsp;school | Creation in Code]]></title>
   <link href="http://nigelfloe.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://nigelfloe.github.io/"/>
-  <updated>2015-08-23T17:40:28-04:00</updated>
+  <updated>2015-08-23T21:54:38-04:00</updated>
   <id>http://nigelfloe.github.io/</id>
   <author>
     <name><![CDATA[David Rowe]]></name>
@@ -12,6 +12,124 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[I Dream of Ruby]]></title>
+    <link href="http://nigelfloe.github.io/blog/2015/08/23/i-dream-of-ruby/"/>
+    <updated>2015-08-23T18:49:49-04:00</updated>
+    <id>http://nigelfloe.github.io/blog/2015/08/23/i-dream-of-ruby</id>
+    <content type="html"><![CDATA[<h2>HydrationError expecting water (0 for 1)</h2>
+
+<p>Last night, I lay tossing and turning in bed, wrestling with phantom error messages. For some reason, the <code>sound_sleep</code> method I normally relied on to send my <code>self</code> (<code>david = Person.new(name: David, age: 26)</code>) off to <code>asleep = true</code></p>
+
+<pre><code class="ruby">class Person
+  include Sleepable
+  attr_accessor :name, :age, :asleep
+  def initialize(name:, age:)
+    @name = name
+    @age = age
+    @asleep = false
+  end
+
+  def asleep?
+    !!@asleep
+  end
+end
+
+david = Person.new(name: 'David', age: 26)
+david.asleep?                               # =&gt; false
+</code></pre>
+
+<p>What&rsquo;s going on here? I roll over, and ask Taryn, my girlfriend, why I can&rsquo;t sleep. She furrows her brows and turns away from me, taking the blankets.</p>
+
+<p>Hmph. I guess I&rsquo;ll check the Sleepable module for answers:</p>
+
+<pre><code class="ruby">module Sleepable
+  def sound_sleep
+    if hydrated
+      asleep = true
+    end
+  end
+end
+
+david.sound_sleep                           # =&gt; nil
+</code></pre>
+
+<p><code>nil</code> sleep sucks at 2 AM.</p>
+
+<p>Check the conditional, maybe <code>self</code> is de<code>hydrated</code>?</p>
+
+<pre><code class="ruby">david.hydrated                              # =&gt; nil
+</code></pre>
+
+<p><code>nil</code> isn&rsquo;t really helping me here&hellip;. Let&rsquo;s look at my Person class again&hellip;</p>
+
+<pre><code class="ruby">class Person &lt; Biology
+  include Sleepable
+  attr_accessor :name, :age, :asleep  
+  def initialize(name:, age:)
+    @name = name
+    @age = age
+    @asleep = false
+  end
+
+  def asleep?
+    !!@asleep
+  end
+end
+
+david.asleep?                               # =&gt; false
+</code></pre>
+
+<p><em>grumble</em></p>
+
+<p>I don&rsquo;t see anything about <code>hydrate</code> here. This is hopeless, and <code>david</code> is so tired&hellip;I mean.. <em>I&rsquo;m</em> so tired. <code>self</code> is tired&hellip;..</p>
+
+<p>Hang on! What&rsquo;s that <code>Biology</code> inheritance? That wasn&rsquo;t there before! Fucking dream code:
+<code>ruby
+david.class.ancestors                       # =&gt; [Person, Sleepable, Biology, Object, Kernel, BasicObject]
+</code></p>
+
+<p>a-HA! a <code>Biology</code> class, that must be the class that&hellip;ummm&hellip;generates behavior for&hellip;..biologic things&hellip;.like birds! or <a href="http://giphy.com/gifs/cat-lolcats-the-internet-EeffMbJ6pwxAQ">lolcats</a>! or people maybe</p>
+
+<pre><code class="ruby">Biology.methods                             # =&gt; [:allocate, :new, :superclass, :json_creatable?, :freeze, :===, :==, :&lt;=&gt;, :&lt;, :&lt;=, :&gt;, :&gt;=, :to_s, :inspect, :included_modules, :sh_t, :include?, :name, :ancestors, :instance_methods, :public_instance_methods, :protected_instance_methods, :private_instance_methods, :constants, :const_get, :const_set, :const_defined?, :const_missing, :die, :class_variables, :remove_class_variable, :class_variable_get, :class_variable_set, :class_variable_defined?, :public_constant, :private_constant, :singleton_class?, :include, :prepend, :hydrate, :module_exec, :class_exec, :module_eval, :class_eval, :method_defined?, :public_method_defined?, :fuck, :private_method_defined?, :protected_method_defined?, :public_class_method, :private_class_method, :autoload, :eat :autoload?, :instance_method, :public_instance_method, :to_json, :nil?, :=~, :!~, :eql?, :hash, :class, :singleton_class, :clone, :dup, :itself, :taint, :tainted?, :pontificate :untaint, :untrust, :meiosis, :untrusted?, :trust, :frozen?, :methods, :...
+</code></pre>
+
+<p>Whoa, there&rsquo;s a lot going on in there&hellip;.</p>
+
+<p>Wait! I see a method called <code>:hydrate</code>. Maybe&hellip;</p>
+
+<pre><code class="ruby">david.hydrate
+
+# ~&gt; HydrationError
+# ~&gt; expecting water (0 for 1)
+# ~&gt;
+# ~&gt; /Users/david/dev/dream.rb:17:in `hydrate'
+# ~&gt; /Users/david/dev/dream.rb:35:in `&lt;main&gt;'
+</code></pre>
+
+<p>It&rsquo;s great when Ruby errors are so descriptive. It looks like I need water.</p>
+
+<p>&ldquo;Taryn, I figured it out! I just needed a glass of water!&rdquo;</p>
+
+<p>She mumbles something and puts a pillow over her head.</p>
+
+<h2>Programming Dreams</h2>
+
+<p>Apparently maddening dreams related to programming are pretty common. There are some good ones in here:</p>
+
+<p><a href="http://c2.com/cgi/wiki?WeirdDeveloperDreams">http://c2.com/cgi/wiki?WeirdDeveloperDreams</a></p>
+
+<p>including this gem:</p>
+
+<blockquote><p>I know I&rsquo;m awake, &amp; I know I fall asleep. Then, in the dream, I wake up a few minutes later, and, in the dream, can&rsquo;t sleep. I spend a few hours wandering around the house until I get tired again, and in the dream, fall asleep again. Then, still in the dream, my alarm goes off. I wake up, and start to go about my day, which feels like an extension of the bad dream I&rsquo;d &ldquo;just had&rdquo; in the bad dream I <em>AM</em> having.
+Recurse this about five times, so that by the time my REAL alarm goes off, and I really AM awake, I&rsquo;m so F4&rsquo;d up I can&rsquo;t tell if I&rsquo;m awake, asleep, if I ever WENT to sleep, if I&rsquo;ve gotten ANY rest what-so-ever, and subsequently spend the rest of the day feeling emotionally &amp; physically drained.
+Then I go home that night, hit the couch, and sleep for nine hours straight.
+This is not an uncommon occurrence, unfortunately.</p></blockquote>
+
+<p><img src="http://media.giphy.com/media/D3hbWaBffn9Cg/giphy.gif" alt="recursion" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Let There Be Light!]]></title>
