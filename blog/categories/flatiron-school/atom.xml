@@ -4,7 +4,7 @@
   <title><![CDATA[Category: flatiron&nbsp;school | Creation in Code]]></title>
   <link href="http://nigelfloe.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://nigelfloe.github.io/"/>
-  <updated>2015-08-23T21:54:38-04:00</updated>
+  <updated>2015-09-08T00:12:35-04:00</updated>
   <id>http://nigelfloe.github.io/</id>
   <author>
     <name><![CDATA[David Rowe]]></name>
@@ -14,13 +14,84 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Mountains are merely mountains]]></title>
+    <link href="http://nigelfloe.github.io/blog/2015/09/08/mountains-are-merely-mountains/"/>
+    <updated>2015-09-08T00:11:10-04:00</updated>
+    <id>http://nigelfloe.github.io/blog/2015/09/08/mountains-are-merely-mountains</id>
+    <content type="html"><![CDATA[<h3>The brook of the mountains</h3>
+
+<h3>Gives me more pleasure than the sea</h3>
+
+<h4>- José Martí</h4>
+
+<p>I spent the weekend at the beach with family. It was a nice opportunity to clear my mind of the burden of my day to day, <a href="http://www.theonion.com/article/84-million-new-yorkers-suddenly-realize-new-york-c-18003">get out of NYC</a>, and allow my mind to come back to the present.</p>
+
+<p>Also, I got a really bad sunburn :-/</p>
+
+<p><img src="http://www.fusiontrained.com/wp-content/uploads/2014/09/Will-Ferrell-sunburn.jpg" alt="http://www.fusiontrained.com/wp-content/uploads/2014/09/Will-Ferrell-sunburn.jpg" /></p>
+
+<p>I&rsquo;ve been thinking a lot about the choices one has to make in order to become an effective programmer. Whether you are learning a new language, being exposed to new concepts and techniques, or applying what you already know to solve the day&rsquo;s challenges, it is easy to become overwhelmed and discouraged by what you don&rsquo;t know or understand. The following quote by artist/photographer/programmer Adam Magyar sums the problem of human limitation:</p>
+
+<h3>I was thinking about how little choice we have when we select our path. We are able to see just a narrow angle, whatever we do. Our knowledge is really limited, and small.”</h3>
+
+<h4>-Adam Magyar</h4>
+
+<p>We only have so much control over the world around us at any given time. We can only see the world from our own eyes. The path we walk is shrouded in uncertainty. Our actions seem insignificant given the grand scale of the universe.</p>
+
+<p><img src="https://paulandsilas.files.wordpress.com/2010/10/insignificant.jpeg" alt="https://paulandsilas.files.wordpress.com/2010/10/insignificant.jpeg" /></p>
+
+<p>Remember that your choices have dignity and importance precisely because you make them in the face of entropy. We choose to build and create and love everyday, and our universe is undoubtedly a richer place because of it.</p>
+
+<p>Accept your limitations. At this moment, there is much you do not know how to do. In every moment you choose to treat the boundary of your knowledge as an end or a beginning. Growth happens as we push that boundary outwards, beyond our current selves.</p>
+
+<p>Every problem will yield to diligent effort, and the abstraction, or method, or pattern you struggle to understand today will be your go-to solution tomorrow.</p>
+
+<p>Growth takes time, and your path will have its detours. Be humble. Be patient. Listen to your feelings. Trust your intuition.</p>
+
+<h2>Zen and the Art of Computer Programming</h2>
+
+<p>The principles of Zen can be applied to virtually any craft, and programming is no different. The title of this section is taken from <a href="http://www.librarysystems.com/zen.htm">this essay</a> by Larry W. Yother, back in 1986. It&rsquo;s a quick read, and is full of helpful advice. Here is a key paragraph:</p>
+
+<blockquote><p>The system will invariably impose all manner of restrictions: the memory space isn’t big enough, the language is limited, input-output devices won’t do what you would like them to. These become challenges, albeit frustrating ones.</p>
+
+<p>Most of the restrictions, however, are in your own mind. It is very difficult to resist the trap of continuing to look for a solution in the wrong place. If an approach to a particular problem yields no results, the usual response is to work even harder on that same approach. This unfortunate fact seems to be true in all human endeavors, from child-raising to international relations. You, as programmer, must know about when something should be expected to pay off, and, if the time passes and there is no payoff, you must stop doing whatever you’re doing and try something else. You must look around at this point, try to see what you’re really doing, and do something else.</p></blockquote>
+
+<p>See also these <strong><a href="http://www.grobmeier.de/the-10-rules-of-a-zen-programmer-03022012.html">10 Rules of a Zen Programmer</a></strong> by Christian Grobmeier. (I&rsquo;m thinking of ordering the book). The bullet points listed below are elaborated in much more detail at the above link:</p>
+
+<p><img src="http://www.grobmeier.de/img/content/200px-Lotus-buddha.svg_.png" alt="http://www.grobmeier.de/img/content/200px-Lotus-buddha.svg_.png" /></p>
+
+<ol>
+<li>Focus</li>
+<li>Keep your mind clean</li>
+<li>Beginners mind</li>
+<li>No ego</li>
+<li>There is no career goal</li>
+<li>Shut up</li>
+<li>Mindfulness. Care. Awareness</li>
+<li>There is no Boss</li>
+<li>Do something else</li>
+<li>There is nothing special</li>
+</ol>
+
+
+<p>Last but not least, there are the <strong><a href="http://rubykoans.com/">Neo Ruby Koans</a></strong>. This project is essentially a public directory of ruby files which anybody can download. Each file contains many Ruby quizzes and coding puzzles designed to train the user through developing their Ruby skills, from working with hashes, strings, and symbols, to metaprogramming and Ruby interoptivity with Java.</p>
+
+<p>The Koans are structured as a test-driven development (TDD) project, and running the path_to_enlightenment.rb file provides a customized test output to the terminal (similar to Rspec) which points the developer-in-training towards the next piece of code which requires attention. The title of this post, &ldquo;Mountains are only mountains&rdquo; is a mantra borrowed from the Ruby Koans.</p>
+
+<h3>Every day is a good day</h3>
+
+<h4>Special thanks to: RB, CM, KR, SL, ETO</h4>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[I Dream of Ruby]]></title>
     <link href="http://nigelfloe.github.io/blog/2015/08/23/i-dream-of-ruby/"/>
     <updated>2015-08-23T18:49:49-04:00</updated>
     <id>http://nigelfloe.github.io/blog/2015/08/23/i-dream-of-ruby</id>
     <content type="html"><![CDATA[<h2>HydrationError expecting water (0 for 1)</h2>
 
-<p>Last night, I lay tossing and turning in bed, wrestling with phantom error messages. For some reason, the <code>sound_sleep</code> method I normally relied on to send my <code>self</code> (<code>david = Person.new(name: David, age: 26)</code>) off to <code>asleep = true</code></p>
+<p>Last night, I lay tossing and turning in bed, wrestling with phantom error messages. For some reason, the <code>sound_sleep</code> method I normally relied on to send my <code>self</code> (<code>david = Person.new(name: David, age: 26)</code>) off to <code>asleep = true</code> wasn&rsquo;t doing the trick.</p>
 
 <pre><code class="ruby">class Person
   include Sleepable
