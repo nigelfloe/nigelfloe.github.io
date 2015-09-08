@@ -7,7 +7,7 @@ categories: "Flatiron&nbsp;School"
 ---
 ## HydrationError expecting water (0 for 1)
 
-Last night, I lay tossing and turning in bed, wrestling with phantom error messages. For some reason, the `sound_sleep` method I normally relied on to send my `self` (`david = Person.new(name: David, age: 26)`) off to `asleep = true`
+Last night, I lay tossing and turning in bed, wrestling with phantom error messages. For some reason, the `sound_sleep` method I normally relied on to send my `self` (`david = Person.new(name: David, age: 26)`) off to `asleep = true` wasn't doing the trick.
 
 ```ruby
 class Person
